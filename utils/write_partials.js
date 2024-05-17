@@ -35,4 +35,4 @@ const setup_footer = `
 `
 
 write_app('./views/partials/header.ejs', setup_header)
-write_app('./views/partials/footer.js', setup_footer)
+write_app('./views/partials/footer.ejs', setup_footer)
