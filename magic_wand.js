@@ -34,6 +34,7 @@ const { models } = require('./script_config')
         `node ./magic_wand/utils/write_partials.js`,
         `node ./magic_wand/utils/write_pages.js`,
         `node ./magic_wand/utils/write_controller.js`,
+        `node ./magic_wand/utils/write_gitignore.js`,
         `npx sequelize db:create`,
     ];
 
