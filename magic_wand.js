@@ -7,7 +7,7 @@ const commands = [
     `npm install --save-dev nodemon`,
     `New-Item -Path ".gitignore" -ItemType "file" -Force`,
     `npx sequelize init`,
-    `node ./utils/db_config.js`,
+    `node ./magic_wand/db_config.js`,
     `if (!(Test-Path .\\app.js)) { New-Item -Path .\\app.js -ItemType file }`,
     `if (!(Test-Path .\\controllers)) { New-Item -Path .\\controllers -ItemType Directory }`,
     `if (!(Test-Path .\\views)) { New-Item -Path .\\views -ItemType Directory }`,
