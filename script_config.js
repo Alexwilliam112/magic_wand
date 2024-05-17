@@ -1,38 +1,68 @@
 
-const db_name = 'rename_database'
-const db_port = 5432
+const db_name = 'db_name'  //RENAME THIS TO YOUR DATABASE NAME
+const db_port = 5432  //SET YOUR POSTGRES PORT
 
-const model1_name = 'rename_this' //rename this to your model
-const model1_config = { //modify this
-    name: 'string',
-    title: 'string',
-    age: 'integer'
+const model1_name = 'rename_this' 
+//rename to model name.if model_name is 'rename_this', it will be ignored
+const model1_config = { 
+    attribute1: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute2: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute3: 'date', //rename KEY to attribute name, VALUE to datatype
+    attribute4: 'string', //delete value and key if not needed!
+    attribute5: 'string', //delete value and key if not needed!
+    attribute6: 'integer' //delete value and key if not needed!
 }
 
-const model2_name = 'rename_this' //rename this to your model
-const model2_config = { //modify this
-    name: 'string',
-    title: 'string',
-    age: 'integer'
+const model2_name = 'rename_this'
+//rename to model name.if model_name is 'rename_this', it will be ignored
+const model2_config = {
+    attribute1: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute2: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute3: 'string', //delete value and key if not needed!
+    attribute4: 'string', //delete value and key if not needed!
 }
 
-const model3_name = 'rename_this' //rename this to your model
-const model3_config = { //modify this
-    name: 'string',
-    title: 'string',
-    age: 'integer'
+const model3_name = 'rename_this' 
+//rename to model name.if model_name is 'rename_this', it will be ignored
+const model3_config = { 
+    attribute1: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute2: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute3: 'integer' //delete value and key if not needed!
 }
 
+const model4_name = 'rename_this' 
+//rename to model name.if model_name is 'rename_this', it will be ignored
+const model4_config = { 
+    attribute1: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute2: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute3: 'integer' //delete value and key if not needed!
+}
+
+const model5_name = 'rename_this'
+//rename to model name.if model_name is 'rename_this', it will be ignored
+const model5_config = { 
+    attribute1: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute2: 'string', //rename KEY to attribute name, VALUE to datatype
+    attribute3: 'integer' //delete value and key if not needed!
+}
+
+//============================================================================================
+//===========================DO NOT CHANGE BELOW THE LINE=====================================
+//============================================================================================
 const model_A = createModel(model1_name, model1_config)
 const model_B = createModel(model2_name, model2_config)
 const model_C = createModel(model3_name, model3_config)
+const model_D = createModel(model4_name, model4_config)
+const model_E = createModel(model5_name, model5_config)
 
-
-//===========================DO NOT CHANGE BELOW THE LINE=====================================
 module.exports = {
-    model_A,
-    model_B,
-    model_C
+    models: [
+        model_A,
+        model_B,
+        model_C,
+        model_D,
+        model_E
+    ]
 }
 
 function createModel(model_name, model_config) {
@@ -40,12 +70,16 @@ function createModel(model_name, model_config) {
     for (const key in model_config) {
         if (Object.hasOwnProperty.call(model_config, key)) {
             const element = model_config[key];
-            temp.push(`${key}:${element}`) 
+            temp.push(`${key}:${element}`)
         }
     }
     const model_attributes = temp.join(',')
-    return `npx sequelize db:model --name ${model_name} --attributes ${model_attributes}`
+    if (model_name !== 'rename_this') {
+        return `npx sequelize model:create --name ${model_name} --attributes ${model_attributes}`
+    } else {
+        return null
     }
+}
 
 const fs = require('fs');
 const configFilePath = './config/config.json';

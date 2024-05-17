@@ -1,1 +1,82 @@
 
+# MAGIC WAND BY ALEX
+
+Automated setup script run in powershell terminal.
+Included setups at the moment:
+=> Project instant initialization (init package.json)
+
+=> Dependencies included:
+    ejs: ^3.1.10,
+    express: ^4.19.2,
+    pg: ^8.11.5,
+    sequelize: ^6.37.3
+=> DevDependencies included: 
+    nodemon: ^3.1.0,
+    sequelize-cli: ^6.6.2
+
+=> SSR MVC directory setup
+=> Server file (app.js) and multi-routers
+=> Postgresql database init with sequelize
+=> Table modeling creation with sequelize
+
+## Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+=> INSTALLED NODE.JS
+=> INSTALLED POSTGRESQL
+
+### Installation
+
+1. Set terminal on your project root directory:
+
+    ```powershell
+    C:\Users\userpath\ProjectNameFile
+    ```
+
+2. Clone the repository inside your project file:
+
+    ```current dirr
+    C:\Users\userpath\ProjectNameFile
+    ```
+
+    ```powershell
+    git clone https://github.com/Alexwilliam112/magic_wand.git
+    ```
+
+## Usage
+
+To use the script, follow these steps:
+
+1. Open magic_wand directory
+
+    ```powershell
+    \ProjectNameFile\magic_wand
+    ```
+
+2. Open script_config.js file
+
+    ```powershell
+    \ProjectNameFile\magic_wand\script_config.js
+    ```
+
+3. Enter database name on db_name variable
+4. Modify postgres default port if needed
+5. Rename model_name to required name (singular word)
+6. Modify attributes on model_attributes
+
+7. Set your terminal path to your project root directory
+    ```powershell
+    \ProjectNameFile\
+    ```
+
+8. Run this command:
+
+```
+node .\magic_wand\magic_wand.js
+```
+
+```powershell
+\ProjectNameFile\ node .\magic_wand\magic_wand.js
+```
