@@ -16,8 +16,6 @@ async function write_app(filePath, setup) {
 }
 
 const setup_header = `
-'use strict'
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
