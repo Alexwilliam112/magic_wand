@@ -10,12 +10,13 @@ fs.readFile(configFilePath, 'utf8', (err, data) => {
     try {
         const config = JSON.parse(data);
 
-        config.development.database = 'db_name_rename_this'
+        config.development.database = 'autoscript_by_alex'
         config.development.username = 'postgres';
         config.development.password = 'postgres';
         config.development.host = 'localhost';
         config.development.port = 5432;
         config.development.dialect = 'postgres'
+        config.development.logging = false
 
         const modifiedConfig = JSON.stringify(config, null, 2);
 
