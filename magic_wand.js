@@ -37,12 +37,14 @@ const commands = [
 
 
 const execPromise = (cmd) => {
-    return new Promise(function (res, rej) {
-        exec(cmd, (error, stdout, stderr) => {
+    return new Promise(function (resolve, reject) {
+        exec(`powershell.exe -Command "${cmd}"`, (error, stdout, stderr) => {
             if (error) {
-                rej(error)
+                console.error(`Error: ${stderr}`);
+                reject(error)
             } else {
-                res(stdout)
+                console.log(`Command output:\n${stdout}`);
+                resolve(stdout)
             }
         })
     })
@@ -58,28 +60,3 @@ const execPromise = (cmd) => {
         }
     }
 })()
-
-
-
-function executeCommandsSequentially(commands) {
-    if (commands.length === 0) {
-        console.log("All commands executed successfully.");
-        return;
-    }
-
-    const command = commands.shift(); // Get the first command
-    exec(`powershell.exe -Command "${command}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error executing command: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`Error: ${stderr}`);
-            return;
-        }
-        console.log(`Command output:\n${stdout}`);
-        executeCommandsSequentially(commands);
-    });
-}
-
-executeCommandsSequentially(commands);
