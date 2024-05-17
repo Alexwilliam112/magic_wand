@@ -1,4 +1,6 @@
 const { exec } = require('child_process');
+const { exit } = require('process');
+const { model_A, model_B, model_C } = require('./script_config')
 
 const commands = [
     `npm init -y`,
@@ -7,7 +9,7 @@ const commands = [
     `npm install --save-dev nodemon`,
     `New-Item -Path ".gitignore" -ItemType "file" -Force`,
     `npx sequelize init`,
-    `node ./magic_wand/db_config.js`,
+    `node ./magic_wand/script_config.js`,
     `if (!(Test-Path .\\app.js)) { New-Item -Path .\\app.js -ItemType file }`,
     `if (!(Test-Path .\\controllers)) { New-Item -Path .\\controllers -ItemType Directory }`,
     `if (!(Test-Path .\\views)) { New-Item -Path .\\views -ItemType Directory }`,
@@ -28,7 +30,36 @@ const commands = [
     `node ./magic_wand/utils/write_pages.js`,
     `node ./magic_wand/utils/write_controller.js`,
     `npx sequelize db:create`,
+    `${model_A}`,
+    `${model_B}`,
+    `${model_C}`,
 ];
+
+
+const execPromise = (cmd) => {
+    return new Promise(function (res, rej) {
+        exec(cmd, (error, stdout, stderr) => {
+            if (error) {
+                rej(error)
+            } else {
+                res(stdout)
+            }
+        })
+    })
+};
+
+(async () => {
+    for await (const el of commands) {
+        try {
+            await execPromise(el)
+
+        } catch (error) {
+            exit()
+        }
+    }
+})()
+
+
 
 function executeCommandsSequentially(commands) {
     if (commands.length === 0) {
