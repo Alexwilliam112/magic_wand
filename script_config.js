@@ -2,21 +2,21 @@
 const db_name = 'rename_database'
 const db_port = 5432
 
-const model1_name = 'rename_this'
+const model1_name = 'rename_this' //rename this to your model
 const model1_config = { //modify this
     name: 'string',
     title: 'string',
     age: 'integer'
 }
 
-const model2_name = 'rename_this'
+const model2_name = 'rename_this' //rename this to your model
 const model2_config = { //modify this
     name: 'string',
     title: 'string',
     age: 'integer'
 }
 
-const model3_name = 'rename_this'
+const model3_name = 'rename_this' //rename this to your model
 const model3_config = { //modify this
     name: 'string',
     title: 'string',
